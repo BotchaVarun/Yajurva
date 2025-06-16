@@ -4,13 +4,18 @@
     "module": "esnext",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src"]
     },
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  }
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,                     
+    "checkJs": false,                   
+    "noEmit": true,                     
+    "resolveJsonModule": true           
+  },
+  "include": ["src"]
 }
