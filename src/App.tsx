@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"; // Only needed if you're using Button
+
 import Navbar from "./pages/Navbar";
 import Footer from "./pages/Footer";
 
