@@ -133,7 +133,6 @@ export default function Navbar() {
     }
   };
 
-  // CSS for hover effects and responsive design
   const cssStyles = `
     @import url('https://api.fontshare.com/v2/css?f[]=hind@400&f[]=pilcrow-rounded@600&display=swap');
     

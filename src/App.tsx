@@ -1,6 +1,7 @@
 
 import Navbar from "./pages/Navbar";
 import Footer from "./pages/Footer";
+import ServiceCard from "./components/services"
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       
       <main className="flex-grow">
         
-
+        <ServiceCard/>
       </main>
       
       <Footer />
