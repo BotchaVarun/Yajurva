@@ -50,7 +50,7 @@ export default function Navbar() {
       textDecoration: 'none',
       padding: '0.5rem 0.75rem',
       fontSize: '0.875rem',
-      fontWeight: '400',
+      
       fontFamily: "'Hind', sans-serif",
       fontWeight:'600',
       transition: 'all 0.2s ease',

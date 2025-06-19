@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reverse X Movement</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .image-container {
+      display: flex;
+      gap: 150px;
+      height: 500px;
+
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .image-container > div {
+      display: flex;
+      align-items: flex-end;
+      transition: transform 0.3s ease;
+    }
+
+    .image {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: transform 0.3s ease, background-position 0.3s ease;
+      will-change: transform, background-position;
+    }
+
+    .image-1 {
+      background-image: url('illustration-card.jpg');
+      width: 300px;
+      height: 250px;
+      z-index: 2;
+    }
+
+    .image-2 {
+      background-image: url('illustration-card.jpg');
+      width: 300px;
+      height: 200px;
+      margin-bottom:60%;
+    }
+
+    .image-3 {
+      background-image: url('illustration-card.jpg');
+      width: 200px;
+      height: 210px;
+      z-index: 1;
+      margin-bottom: auto;
+    }
+
+    .image-4 {
+      background-image: url('illustration-card.jpg');
+      width: 250px;
+      height: 200px;
+      margin-bottom: 50px;
+      margin-right: -50px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="image-container" id="container">
+    <div><div class="image image-1"></div></div>
+    <div><div class="image image-2"></div></div>
+    <div><div class="image image-3"></div></div>
+    <div><div class="image image-4"></div></div>
+  </div>
+
+<script>
+  const container = document.getElementById('container');
+  const wrappers = container.querySelectorAll('div');
+  const images = container.querySelectorAll('.image');
+
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const percentX = (x / rect.width - 0.5) * 2;
+
+    const containerMoveX = -percentX * 30;
+    const imageMoveX = -percentX * 60;
+    const bgX = 50 - percentX * 40; // increased background shift
+
+    wrappers.forEach(wrapper => {
+      wrapper.style.transform = `translateX(${containerMoveX}px)`;
+    });
+
+    images.forEach(image => {
+      image.style.transform = `translateX(${imageMoveX}px)`;
+      image.style.backgroundPosition = `${bgX}% 50%`;
+    });
+  });
+
+  container.addEventListener('mouseleave', () => {
+    wrappers.forEach(wrapper => {
+      wrapper.style.transform = `translateX(0px)`;
+    });
+    images.forEach(image => {
+      image.style.transform = `translateX(0px)`;
+      image.style.backgroundPosition = `50% 50%`;
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+@import url("https://api.fontshare.com/v2/css?f[]=stardom@400&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=stardom@400&f[]=general-sans@400,600&display=swap");
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 5vw; /* flexible spacing */
+  padding: 2vw;
+  height: auto;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+  
+}
+
+.wrapper {
+  display: flex;
+  align-items: flex-end;
+  transition: transform 0.3s ease;
+}
+.service-wrapper {
+  position: relative; 
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.services-heading {
+  position: absolute;     
+  left: 15vh;            
+  top: -5vh;               
+  font-family: 'Stardom', sans-serif;
+  writing-mode: vertical-rl;
+  transform: rotate(-90deg);
+  font-size: 5vw;
+  z-index: 10;
+  color: #000000;
+  pointer-events: none;
+ 
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  padding-left: 2vw;
+}
+
+
+
+/* Base image styles */
+.image {
+  position: relative;           /* ← add this */
+  background-image: url('./img/illustration-card.jpg');
+  background-size: 120% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.3s ease, background-position 0.3s ease;
+  will-change: transform, background-position;
+  flex-shrink: 0;
+  border-radius: 5px;
+}
+
+
+/* image screens */
+.image-1 {
+  width: 25vw;  /* image width */
+  height: 35vh;  /* image height */
+  z-index: 2;
+  margin-top:20vw;
+  margin-left: -18vh;
+ background-image: url('./img/3d-design-card.jpg');  /* ← add this */
+  background-size: cover;
+}
+
+.image-2 {
+  width: 15vw;
+  height: 50vh;
+  margin-top: -10vh;
+  margin-right: -2vw;
+   background-image: url('./img/illustration-card.jpg');  /* ← add this */
+  background-size: cover;
+}
+
+.image-3 {
+  width: 25vw;
+  height: 25vh;
+  z-index: 1;
+   background-image: url('./img/packaging-card.jpg');  /* ← add this */
+  margin-top:-80vh;
+  
+}
+
+.image-4 {
+  width: 15vw;
+  height: 50vh;
+  margin-bottom: -20vh;
+  margin-right: -2vw;
+  background-image: url('./img/ui-ux-card.png');
+  background-size: cover;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px; 
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: 'General Sans', sans-serif;
+  cursor: pointer;
+  color: #020202;
+  transition: color 0.3s ease;
+ 
+  border-radius: 8px;
+  float: right;
+}
+.arrow-icon {
+  transition: transform 0.2s ease-in-out;
+  transform-origin: left center;
+}
+
+.buttons:hover .arrow-icon {
+  animation: stingy-pop 0.6s ease forwards;
+}
+
+@keyframes stingy-pop {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(6px) scaleX(1.2);
+  }
+  60% {
+    transform: translateX(-2px) scaleX(0.95);
+  }
+  100% {
+    transform: translateX(0) scaleX(1);
+  }
+}
+
+.parallax-card::after {
+  content: 'view';
+  position: absolute;
+  left: var(--mouse-x, -100px);
+  top: var(--mouse-y, -100px);
+  width: 90px;
+  height: 90px;
+  background: rgba(247, 246, 246, 0.85);
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-family: 'Bebas Neue', sans-serif;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+  backdrop-filter: blur(2px);
+  z-index: 999;
+}
+
+.parallax-card:hover::after {
+  opacity: 1;
+}
+
+.parallax-card:hover {
+  cursor: none;
+  position: relative;
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .image-1,
+  .image-2,
+  .image-3,
+  .image-4 {
+    width: 30vw;
+    height: auto;
+    margin: 2vh 0;
+  }
+
+  .image-1 { margin-top: 10vh; }
+  .image-2 { margin-bottom: 15vh; }
+  .image-4 { margin-right: 0; }
+    .services-heading {
+    font-size: 6vw;
+    left: 8vw;
+    top: -2vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .image-container {
+    gap: 5vw;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-1,
+  .image-2,
+  .image-3,
+  .image-4 {
+    width: 80vw;
+    height: 35vh;
+    margin: 3vh 0;
+  }
+
+  .image-1,
+  .image-2,
+  .image-3,
+  .image-4 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+    .services-heading {
+    position: static;
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 7vw;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .service-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 1023px) {
+  .image-container {
+    gap: 5vw;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-1,
+  .image-2,
+  .image-3,
+  .image-4 {
+    width: 80vw;
+    height: 35vh;
+    margin: 3vh 0;
+  }
+
+  .image-1,
+  .image-2,
+  .image-3,
+  .image-4 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
