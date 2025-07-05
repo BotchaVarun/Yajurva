@@ -72,7 +72,7 @@ function App() {
               <div 
                 className="text-center"
               style={{
-                fontSize: 'clamp(2rem, 6vw, 5rem)', // responsive between 2rem and 5rem based on viewport width
+                fontSize: 'clamp(2rem, 6vw, 4rem)', // responsive between 2rem and 5rem based on viewport width
                 fontWeight: 'bold',
                 color: 'white',
                 textShadow: '0 0 20px rgba(184, 24, 24, 0.8), 0 0 40px rgba(120, 30, 30, 0.6)',
@@ -135,7 +135,7 @@ function App() {
     color: 'white',
     textShadow: '0 0 20px rgba(184, 24, 24, 0.8), 0 0 40px rgba(120, 30, 30, 0.6)',
     lineHeight: '1.2',
-    transform: 'translateY(200px)',
+    transform: 'translateY(130px)',
     padding: '0 1rem',
     textAlign: 'center',
   }}
