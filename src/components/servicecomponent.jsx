@@ -27,7 +27,6 @@ const ImageParallax = () => {
         image.style.backgroundPosition = `${bgX}% 50%`;
       });
 
-      // Update --mouse-x/y for hover effect
       images.forEach((card) => {
         const rect = card.getBoundingClientRect();
         const isHovering =

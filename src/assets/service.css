@@ -20,7 +20,7 @@
           background-position: center;
         }
 .uiux-card {
-  background-image: url(./img/ui-ux-card.png);
+  background-image: url(./img/ui-ux-card.png); /* ← add this */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -28,29 +28,29 @@
 
 
         .packaging-card {
-          background-image: url(./img/packaging-card.jpg);
-            background-size: cover;
+          background-image: url(./img/packaging-card.jpg); /* ← add this */
+            background-size: cover; 
   background-repeat: no-repeat;
   background-position: center;
         }
 
         .design3d-card {
-          background-image: url(./img/3d-design-card.jpg);
+          background-image: url(./img/3d-design-card.jpg); /* ← add this */
             background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
         }
 
         .illustration-card {
-          background-image: url(./img/illustration-card.jpg);
+          background-image: url(./img/illustration-card.jpg); /* ← add this */
             background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
         }
 
         .branding-card {
-          background-image: url(./img/packaging-card.jpg);
-            background-size: cover;
+          background-image: url(./img/packaging-card.jpg); /* ← add this */
+            background-size: cover; 
   background-repeat: no-repeat;
   background-position: center;
         }

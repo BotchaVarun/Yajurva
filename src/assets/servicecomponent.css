@@ -99,7 +99,7 @@ body, html {
   height: 50vh;
   margin-bottom: -20vh;
   margin-right: -2vw;
-  background-image: url('./img/ui-ux-card.png');
+  background-image: url('./img/ui-ux-card.png');  /* ← add this */
   background-size: cover;
 }
 .buttons {
