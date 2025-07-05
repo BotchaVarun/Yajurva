@@ -2,7 +2,7 @@ import Navbar from "./pages/Navbar";
 import Footer from "./pages/Footer";
 
 import Hyperspeed from './components/homepage/Hyperspeed';
-import SplitText from './components/homepage/SplitText'
+import SplitText from './components/homepage/splittext'
 import CircularText from './components/homepage/CircularText';
 function App() {
   const handleAnimationComplete = () => {
