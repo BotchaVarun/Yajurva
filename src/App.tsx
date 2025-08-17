@@ -4,7 +4,7 @@ import Footer from "./pages/Footer";
 import Development from "./pages/Development";
 
 import Hyperspeed from "./components/homepage/Hyperspeed";
-import SplitText from "./components/homepage/SplitText";
+import SplitText from "./components/homepage/SplitText.jsx";
 import CircularText from "./components/homepage/CircularText";
 import Services from "./components/services";
 
