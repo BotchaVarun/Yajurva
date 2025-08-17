@@ -1,9 +1,8 @@
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText as GSAPSplitText } from "gsap/splittext";
 
-gsap.registerPlugin(ScrollTrigger, GSAPSplitText);
+gsap.registerPlugin(ScrollTrigger);
 
 const SplitText = ({
   text,
@@ -11,7 +10,7 @@ const SplitText = ({
   delay = 100,
   duration = 0.6,
   ease = "power3.out",
-  splitType = "chars",
+  splitType = "chars", // "chars" | "words" | "lines"
   from = { opacity: 0, y: 40 },
   to = { opacity: 1, y: 0 },
   threshold = 0.1,
@@ -22,37 +21,49 @@ const SplitText = ({
   const ref = useRef(null);
   const animationCompletedRef = useRef(false);
 
+  // Helper: Split text into spans
+  const getSplitText = () => {
+    if (splitType === "words") {
+      return text.split(" ").map((word, i) => (
+        <span
+          key={i}
+          className="split-word"
+          style={{ display: "inline-block", whiteSpace: "pre" }}
+        >
+          {word}&nbsp;
+        </span>
+      ));
+    }
+    if (splitType === "lines") {
+      return text.split("\n").map((line, i) => (
+        <span
+          key={i}
+          className="split-line"
+          style={{ display: "block", whiteSpace: "pre" }}
+        >
+          {line}
+        </span>
+      ));
+    }
+    // Default = chars
+    return text.split("").map((char, i) => (
+      <span
+        key={i}
+        className="split-char"
+        style={{ display: "inline-block", whiteSpace: "pre" }}
+      >
+        {char}
+      </span>
+    ));
+  };
+
   useEffect(() => {
     const el = ref.current;
     if (!el || animationCompletedRef.current) return;
 
-    const absoluteLines = splitType === "lines";
-    if (absoluteLines) el.style.position = "relative";
-
-    const splitter = new GSAPSplitText(el, {
-      type: splitType,
-      absolute: absoluteLines,
-      linesClass: "split-line",
-    });
-
-    let targets;
-    switch (splitType) {
-      case "lines":
-        targets = splitter.lines;
-        break;
-      case "words":
-        targets = splitter.words;
-        break;
-      case "words, chars":
-        targets = [...splitter.words, ...splitter.chars];
-        break;
-      default:
-        targets = splitter.chars;
-    }
-
-    targets.forEach((t) => {
-      t.style.willChange = "transform, opacity";
-    });
+    const targets = el.querySelectorAll(
+      ".split-char, .split-word, .split-line"
+    );
 
     const startPct = (1 - threshold) * 100;
     const m = /^(-?\d+)px$/.exec(rootMargin);
@@ -70,11 +81,7 @@ const SplitText = ({
       smoothChildTiming: true,
       onComplete: () => {
         animationCompletedRef.current = true;
-        gsap.set(targets, {
-          ...to,
-          clearProps: "willChange",
-          immediateRender: true,
-        });
+        gsap.set(targets, { ...to, clearProps: "all" });
         onLetterAnimationComplete?.();
       },
     });
@@ -92,38 +99,25 @@ const SplitText = ({
       tl.kill();
       ScrollTrigger.getAll().forEach((t) => t.kill());
       gsap.killTweensOf(targets);
-      splitter.revert();
     };
-  }, [
-    text,
-    delay,
-    duration,
-    ease,
-    splitType,
-    from,
-    to,
-    threshold,
-    rootMargin,
-    onLetterAnimationComplete,
-  ]);
+  }, [text, delay, duration, ease, splitType, from, to, threshold, rootMargin]);
 
   return (
-<p
-  ref={ref}
-  className={`split-parent ${className}`}
-  style={{
-    textAlign: 'center',
-    overflow: 'hidden',
-    display: 'inline-block',
-    whiteSpace: 'pre-line', // ✅ required for \n to render as line breaks
-    wordWrap: 'break-word',
-    fontFamily: "'Clash Display', sans-serif",
-    maxWidth: '100%',
-    padding: '0 1rem',       // Optional: prevents edge clipping on mobile
-  }}
->
-
-      {text}
+    <p
+      ref={ref}
+      className={`split-parent ${className}`}
+      style={{
+        textAlign,
+        overflow: "hidden",
+        display: "inline",
+        whiteSpace: "pre-line", // ✅ supports \n line breaks
+        wordWrap: "break-word",
+        fontFamily: "'Clash Display', sans-serif",
+        maxWidth: "100%",
+        padding: "0 1rem",
+      }}
+    >
+      {getSplitText()}
     </p>
   );
 };
