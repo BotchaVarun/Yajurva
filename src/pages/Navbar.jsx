@@ -13,7 +13,7 @@ export default function Navbar() {
       borderBottom: '1px solid #e5e7eb',
       position: 'sticky',
       top: 0,
-      zIndex: 50,
+      zIndex: 510,
       boxShadow: '0 5px 3px rgba(0, 0, 0, 0.1)'
     },
     navbarContainer: {
@@ -199,7 +199,7 @@ export default function Navbar() {
         <div style={styles.navbarContainer}>
           <div style={styles.navbarContent}>
             {/* Logo */}
-            <a href="#" style={styles.logo}>
+            <a href="/" style={styles.logo}>
               Yajurva<span style={styles.logoAccent}>*</span>
             </a>
 
@@ -212,12 +212,12 @@ export default function Navbar() {
               </li>
 
               <li>
-                <a href="#" style={styles.navLink} className="nav-link">
+                <a href="/Development" style={styles.navLink} className="nav-link">
                   Development
                 </a>
               </li>
               <li>
-                <a href="#" style={styles.navLink} className="nav-link">
+                <a href="/about" style={styles.navLink} className="nav-link">
                   About
                 </a>
               </li>

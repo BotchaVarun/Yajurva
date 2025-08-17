@@ -1,0 +1,174 @@
+/* --- General Setup & Custom Fonts --- */
+/* Ensure you have imported 'Inter' and 'Clash Display' in your main index.css or HTML file */
+
+.services-section {
+    background-color: #ffffff;
+    color: #1f2937;
+    padding: 6rem 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.services-container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* --- Header Styles --- */
+.services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.services-title {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 2.5rem; /* Mobile first */
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #111827;
+}
+
+.services-title .title-light {
+    color: #9ca3af;
+}
+
+.services-subtitle {
+    color: #4b5563;
+    margin-top: 1.5rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.125rem;
+    line-height: 1.75;
+}
+
+/* --- Services Grid Layout --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to 1 column for mobile */
+    gap: 2.5rem;
+}
+
+/* --- Card Base Styles --- */
+.service-card {
+    position: relative;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 1.5rem; /* 24px */
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 2.5rem; /* 40px */
+    text-align: center;
+    color:#ffffff;
+}
+
+.card-icon {
+    margin: 0 auto 1.5rem;
+    height: 80px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-icon span {
+    font-size: 2.25rem;
+}
+
+.card-title {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    color: #ffff;
+}
+
+.card-description {
+    color: #d1d5db;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.card-footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+.card-price {
+    color: #d1d5db;
+    margin: 0 0 1rem;
+    font-size: 0.875rem;
+}
+.card-price .price-amount {
+    color: #d1d5db;
+    font-weight: 600;
+}
+
+.card-button {
+    background-color:#ffffff;
+    color: #111827;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card-button:hover {
+    background-color: #374151;
+}
+
+/* --- Featured Card Modifier Styles --- */
+.service-card.featured {
+    background-color: #111827;
+    color: #d1d5db;
+}
+.service-card.featured .card-title,
+.service-card.featured .price-amount {
+    color: #ffffff;
+}
+.service-card.featured .card-description,
+.service-card.featured .card-price {
+    color: #d1d5db;
+}
+.service-card.featured .card-icon {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #4b5563;
+}
+.service-card.featured .card-button {
+    background-color: white;
+    color: #111827;
+}
+.service-card.featured .card-button:hover {
+    background-color: #374151;
+}
+
+
+/* --- Responsive Breakpoint for Desktop --- */
+@media (min-width: 768px) {
+    .services-title {
+        font-size: 3rem;
+    }
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

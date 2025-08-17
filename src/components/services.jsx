@@ -1,70 +1,110 @@
-import React, { useEffect } from 'react';
-import uiuxCardImage from '../assets/img/ui-ux-card.png';
-import packagingCardImage from '../assets/img/packaging-card.jpg';
-import DesignImage from '../assets/img/3d-design-card.jpg';
-import IllustrationImage from '../assets/img/illustration-card.jpg';
-import BrandingImage from '../assets/img/3d-design-card.jpg';
-import '../assets/service.css';
-const ServiceCard = () => {
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const cards = document.querySelectorAll('.portfolio-card');
-      cards.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        const isHovering =
-          e.clientX >= rect.left &&
-          e.clientX <= rect.right &&
-          e.clientY >= rect.top &&
-          e.clientY <= rect.bottom;
+import React from 'react';
+import './homepage/css/Services.css'; // Import the corresponding CSS file
+import SpotlightCard from './SpotlightCard';
+  
 
-        if (isHovering) {
-          card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-          card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-        }
-      });
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-    return () => document.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
+function Services() {
   return (
-<>
-    <div className="portfolio-container">
-      <div className="portfolio-card uiux-card">
-       <div className="card-content">
-        <h3>UI/UX Design</h3>
+    <section className="services-section">
+      <div className="services-container">
+        
+        {/* Section Heading */}
+        <div className="services-header">
+          <h2 className="services-title">
+            <span className="title-light">Our</span> Services
+          </h2>
+          <p className="services-subtitle">
+            At Yajurva, we craft meaningful digital experiences tailored to your business. 
+            From websites and apps to UI/UX and growth strategies, our services blend 
+            creativity with functionality to deliver long-lasting impact.
+          </p>
+        </div>
+
+        {/* Services Grid (2 columns on desktop) */}
+        <div className="services-grid">
+          
+          {/* Featured Service Card: Web Design */}
+          <div className="service-card featured">
+            
+              <SpotlightCard className="custom-spotlight-card card-content" spotlightColor="rgba(0, 229, 255, 0.2)">
+              <div className="card-icon"><span>✨</span></div>
+              <h3 className="card-title">Web Design</h3>
+              <p className="card-description">
+                We design visually stunning, user-friendly websites that leave a lasting impression. 
+                Blending creativity with functionality, our designs elevate your brand identity.
+              </p>
+              <div className="card-footer">
+                <p className="card-price">
+                  Starts at <span className="price-amount">$1,500</span>
+                </p>
+                <button className="card-button">Book a Call →</button>
+              </div>
+               </SpotlightCard>
+
+            
+          </div>
+
+          {/* Standard Service Card: Web Development */}
+          <div className="service-card">
+            
+              <SpotlightCard className="custom-spotlight-card card-content" spotlightColor="rgba(0, 229, 255, 0.2)">
+              <div className="card-icon"><span>💻</span></div>
+              <h3 className="card-title">Web Development</h3>
+              <p className="card-description">
+                Our team builds scalable, high-performing websites that align with your business objectives. 
+                We ensure your site is fast, secure, and future-ready.
+              </p>
+              <div className="card-footer">
+                <p className="card-price">
+                  Starts at <span className="price-amount">$1,800</span>
+                </p>
+                <button className="card-button">Book a Call →</button>
+              </div>
+              </SpotlightCard>
+             
+
+          </div>
+
+          {/* Standard Service Card: App Development */}
+          <div className="service-card">
+             <SpotlightCard className="custom-spotlight-card card-content" spotlightColor="rgba(0, 229, 255, 0.2)">
+              <div className="card-icon"><span>📱</span></div>
+              <h3 className="card-title">App Development</h3>
+              <p className="card-description">
+                We create modern, scalable mobile applications that deliver smooth user experiences 
+                and drive engagement across platforms.
+              </p>
+              <div className="card-footer">
+                <p className="card-price">
+                  Starts at <span className="price-amount">$2,000</span>
+                </p>
+                <button className="card-button">Book a Call →</button>
+              </div>
+            </SpotlightCard>
+          </div>
+
+          {/* Featured Service Card: Digital Marketing */}
+          <div className="service-card featured">
+            <SpotlightCard className="custom-spotlight-card card-content" spotlightColor="rgba(0, 229, 255, 0.2)">
+              <div className="card-icon"><span>📢</span></div>
+              <h3 className="card-title">Digital Marketing</h3>
+              <p className="card-description">
+                From SEO and social media to content strategy, our marketing solutions 
+                help your brand grow online while building long-term customer relationships.
+              </p>
+              <div className="card-footer">
+                <p className="card-price">
+                  Starts at <span className="price-amount">$1,200</span>
+                </p>
+                <button className="card-button">Book a Call →</button>
+              </div>
+            </SpotlightCard>
+          </div>
 
         </div>
       </div>
-      <div className="portfolio-card packaging-card">
-       <div className="card-content">
-        <h3>Packaging</h3>
-    
-        </div>
-      </div>
-      <div className="portfolio-card design3d-card">
-       <div className="card-content">
-        <h3>Designing</h3>
-       
-        </div>
-      </div>
-      <div className="portfolio-card illustration-card">
-       <div className="card-content">
-        <h3>Illustartion</h3>
-       
-        </div>
-      </div>
-      <div className="portfolio-card branding-card">
-          <div className="card-content">
-        <h3>Branding</h3>
-       
-        </div>
-      </div>
-    
-    </div>
-    </>
+    </section>
   );
-};
+}
 
-export default ServiceCard;
+export default Services;
