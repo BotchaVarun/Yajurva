@@ -1,7 +1,10 @@
 import { useRef } from "react";
-import "./Homepage/css/SpotlightCard.css";
 
-const SpotlightCard = ({ children, className = "", spotlightColor = "rgba(255, 255, 255, 0.25)" }) => {
+const SpotlightCard = ({
+  children,
+  className = "",
+  spotlightColor = "rgba(255, 255, 255, 0.25)",
+}) => {
   const divRef = useRef(null);
 
   const handleMouseMove = (e) => {
@@ -15,13 +18,57 @@ const SpotlightCard = ({ children, className = "", spotlightColor = "rgba(255, 2
   };
 
   return (
-    <div
-      ref={divRef}
-      onMouseMove={handleMouseMove}
-      className={`card-spotlight ${className}`}
-    >
-      {children}
-    </div>
+    <>
+      <style>{`
+        .card-spotlight {
+          position: relative;
+          border-radius: 1.5rem;
+          border: 1px solid #222;
+          background-color: #111;
+          padding: 2rem;
+          overflow: hidden;
+          --mouse-x: 50%;
+          --mouse-y: 50%;
+          --spotlight-color: rgba(255, 255, 255, 0.05);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-spotlight::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(
+            circle at var(--mouse-x) var(--mouse-y),
+            var(--spotlight-color),
+            transparent 80%
+          );
+          opacity: 0;
+          transition: opacity 0.5s ease;
+          pointer-events: none;
+        }
+
+        .card-spotlight:hover::before,
+        .card-spotlight:focus-within::before {
+          opacity: 0.6;
+        }
+
+        .card-spotlight:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+      `}</style>
+
+      <div
+        ref={divRef}
+        onMouseMove={handleMouseMove}
+        className={`card-spotlight ${className}`}
+      >
+        {children}
+      </div>
+    </>
   );
 };
 
