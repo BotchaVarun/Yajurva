@@ -74,7 +74,7 @@ function About() {
       </div>
 
       {/* Inline Styles */}
-      <style jsx>{`
+      <style>{`
         .about-page {
           background: linear-gradient(to bottom, #000000, #1a1a1a, #000000);
           min-height: 100vh;
