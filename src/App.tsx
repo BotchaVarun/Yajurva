@@ -3,9 +3,9 @@ import Navbar from "./pages/Navbar";
 import Footer from "./pages/Footer";
 import Development from "./pages/Development";
 
-import Hyperspeed from "./components/homepage/Hyperspeed";
-import SplitText from "./components/homepage/SplitText.jsx";
-import CircularText from "./components/homepage/CircularText";
+import Hyperspeed from "./components/HomePage/Hyperspeed";
+import SplitText from "./components/HomePage/SplitText";
+import CircularText from "./components/HomePage/CircularText";
 import Services from "./components/services";
 
 // Import other pages if you have them

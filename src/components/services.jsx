@@ -1,5 +1,5 @@
 import React from 'react';
-import './homepage/css/Services.css'; // Import the corresponding CSS file
+import './Homepage/css/Services.css'; // Import the corresponding CSS file
 import SpotlightCard from './SpotlightCard';
   
 
